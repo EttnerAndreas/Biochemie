@@ -3,7 +3,7 @@
     "path": "C:/Users/andie/Downloads/Biochemie Nucleosome/Biochemie/changes from master branch.R",
     "project_path": "changes from master branch.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "1073940386",
     "contents": "",
     "dirty": true,
     "created": 1606555702174.0,
@@ -11,15 +11,15 @@
     "relative_order": 1,
     "properties": {
         "tempName": "Untitled1",
-        "cursorPosition": "462,2",
-        "scrollLine": "455"
+        "cursorPosition": "524,0",
+        "scrollLine": "498"
     },
     "folds": "",
     "lastKnownWriteTime": 1606555720,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1606557784174,
+    "last_content_update": 1606559699566,
     "read_only": false,
     "read_only_alternatives": []
 }

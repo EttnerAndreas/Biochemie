@@ -1,5 +1,8 @@
 source("http://bioconductor.org/biocLite.R")
 biocLite("Rsubread")
+
+
+
 install.packages("Rsubread")
 install.packages("ggplot")
 install.packages("ggpubr")
@@ -44,14 +47,6 @@ colnames(data2) =c("default", "default s", "local", "local s")
 #saveRDS(data1, file="bowtie2_method_analyze")
 
 barplot(data2)
-
-
-#  37.41,  38.31,  35.50,  38.24
-#  61.40,  60.81,  62.22,  60.73
-
-
-#   "37.41","38.31","35.50","38.24"
-#    61.40, 60.81, 62.22,60.73
 
 
 #'
@@ -267,8 +262,6 @@ col3 = c('#316879','#f47a60','#7fe7dc','#ced7d8','#763626')
 col5 = c( '#662e1c','#662e1c','#af4425','#af4425','#5d535e','#5d535e','#9a9eab','#9a9eab')
 col6 = c( '#002c54' ,'#002c54', '#008dcb', '#008dcb' ,'#662e1c','#662e1c','#D55448','#D55448')
 col7 = c( '#002c54' ,'#002c54', '#008dcb', '#008dcb' ,'#e8a735','#e8a735','#D55448','#D55448')
-col_insert = c( 'white','#e8a735','#e8a735','#008dcb', '#008dcb' ,'#D55448','#B6452c','#002c54' ,'#002c54')
-col_insertLegende = c( '#e8a735','#e8a735','#008dcb', '#008dcb' ,'#B6452c','#B6452c','#002c54' ,'#002c54')
 col_darkLegende = c('#B6452c','#B6452c','#002c54' ,'#002c54')
 
 
@@ -315,25 +308,24 @@ legend("bottomleft", legend = c("Default_n","Default_S","local_n","local_S"), co
 #'
 #'
 #'
+#'
+#'
 ##################### ALL 8 DATA ANALYSE
 
-Data_1 <- read_excel("C:/Users/andie/Downloads/Insert histogram 8/Data 1.xlsx")
-Data_1
-
-matplot( Data_1 ,type = "o",  ylab = "",  cex = 0,  lty = c(1),lwd=2, las = 1, x = Data_1$count,  xlab = "Insert size Histogram",  bg = "20",col =  col_insert,xlim=c(37,401))
-legend(365.15,2154007,pt.cex = 0 ,  pch= 1, c( "light low digest", "light low digest", "light high digest", "light high digest",    "dark low digest", "dark low digest", "dark high digest", "dark high digest"),box.lty = 0,box.col = 0, box.lwd = 3, cex = 1.1, lwd = 2.2, lty = c(1,1), col = col_insertLegende  , text.col = col_insertLegende , merge = TRUE)
-
-# new data 
-
 cuttoff_data <- read_excel("C:/Users/andie/Downloads/Insert histogram 8/cuttoff data.xlsx")
-cuttoff_data
+
+col_insert = c( 'white','#e8a735','#008dcb','#008dcb', '#e8a735' ,'#D55448','#B6452c','#002c54' ,'#002c54')
+col_insertLegende = c( '#e8a735','#e8a735','#008dcb', '#008dcb' ,'#B6452c','#B6452c','#002c54' ,'#002c54')
+col_darkinsert = c( '#B6452c','#B6452c','#002c54' ,'#002c54')
+col_darkLegende = c('#B6452c','#B6452c','#002c54' ,'#002c54')
+
 
 matplot( Data_1[1:5],type = "o",  ylab = "",  cex = 0,  lty = c(1),lwd=2, las = 1, x = Data_1$count,  xlab = "Insert size Histogram", xlim=c(37,401), bg = "20",col =  col_insert)
-legend(285.15,2154007,pt.cex = 0  ,pch= 1, c( "light low digest", "light low digest", "light high digest", "light high digest"),box.lty = 0,box.col = 0, box.lwd = 4, cex = 0.9, lwd = 2.5, lty = c(1,1), col = col_insertLegende[1:4]  , text.col = col_insertLegende[1:4] , merge = TRUE)
+legend(265.15,2154007,pt.cex = 0  ,pch= 1, c( "light low digest", "light low digest", "light high digest", "light high digest"),box.lty = 0,box.col = 0, box.lwd = 4, cex = 0.9, lwd = 2.5, lty = c(1,1), col = col_insertLegende[1:4]  , text.col = col_insertLegende[1:4] , merge = TRUE)
 
 
-matplot( Data_1[6:9],type = "o",  ylab = "",  cex = 0,  lty = c(1),lwd=2, las = 1, x = Data_1$count,  xlab = "Insert size Histogram", xlim=c(37,401), bg = "20",col =  col_insert[5:9])
-legend(285.15,954007,pt.cex = 0  ,pch= 1, c( "dark low digest", "dark low digest", "dark high digest", "dark high digest"),box.lty = 0,box.col = 0, box.lwd = 4, cex = 0.9, lwd = 2.5, lty = c(1,1), col = col_darkLegende  , text.col = col_darkLegende , merge = TRUE)
+matplot( Data_1[6:9],type = "o",  ylab = "",  cex = 0,  lty = c(1),lwd=2, las = 1, x = Data_1$count,  xlab = "Insert size Histogram", xlim=c(37,401), bg = "20",col =col_darkinsert)
+legend(265.15,954007,pt.cex = 0  ,pch= 1, c( "dark low digest", "dark low digest", "dark high digest", "dark high digest"),box.lty = 0,box.col = 0, box.lwd = 4, cex = 0.9, lwd = 2.5, lty = c(1,1), col = col_darkLegende  , text.col = col_darkLegende , merge = TRUE)
 
 ?legend
 ?matplot
@@ -366,16 +358,14 @@ data2[2,7] =38.3
 data2[2,8] =39.5
 
 data2
-##############      LIGHT PART Multi vs single mapped 
+##############     Multi vs single mapped 
 #'
-#'
-#'
-df2 <- data.frame(supp=rep(c("Single", "Multi"), each=4),
-                  colorpanel=rep(c( "A: single mapping ","B: single mapping ","C: multi mapping ","D: multi mapping "), each=2),
-                  dose=rep(c("light low digest1", "light low digest2", "light high digest1", "light high digest2"),2),
-                  len=c(data2[1],data2[3],data2[5],data2[7],data2[2],data2[4],data2[6],data2[8]))
 
-p =ggplot(data=df2, aes(x=dose, y=len, fill=colorpanel)) +
+df2 <- data.frame(supp=rep(c("Single", "Multi"), each=8),
+                  dose=rep(c("light low digest1", "light low digest2", "light high digest1", "light high digest2","dark low digest1", "dark low digest2", "dark high digest1", "dark high digest2"),2),
+                  len=c(data2[1],data2[3],data2[5],data2[7],data2[9],data2[11],data2[13],data2[15],data2[2],data2[4],data2[6],data2[8],data2[10],data2[12],data2[14],data2[16]))
+
+p =ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
   geom_bar(stat="identity", )
 p+ scale_fill_manual(values=c('#e8a735','#008dcb', '#008dcb' ,'#B6452c'))
 
@@ -383,70 +373,36 @@ df_sorted <- arrange(df2, dose, supp)
 df_cumsum <- ddply(df_sorted, "dose",
                    transform, label_ypos=cumsum(len))
 
-q1 =ggplot(data=df_cumsum, aes(x=dose, y=len, fill=colorpanel)) +
+q1 =ggplot(data=df_cumsum, aes(x=dose, y=len, fill=supp)) +
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle = 30,hjust = 1))   +
-  geom_text(aes(y=label_ypos, label=len), vjust=c(2,  2,2,  2,  2,  2,2,  2),color="white", size=3.5)+
+  geom_text(aes(y=label_ypos, label=len), vjust=c(2,  2,2,  2,  2,  2,2,  2,2,  2,2,  2,  2,  2,2,  2),color="white", size=3.5)+
   scale_fill_brewer(palette="Paired")+
   theme_light()+
   theme(axis.text.x = element_text(angle = 30,hjust = 1))
 
-q1 + scale_fill_manual(values=c('#f3d39a', '#7fc6e5', '#e8a735' ,'#008dcb'))  
-q1 + scale_fill_manual(values=c('#6b7b8c','#6b7b8c','#3b4d61', '#3b4d61'))
-#'
-#'
-#'
-#'
-#'
-#'
-##############      Dark PART Multi vs single mapped 
-#'
-#'
-#'
-df2 <- data.frame(supp=rep(c("Single", "Multi"), each=4),
-                  colorpanel=rep(c( "A: single mapping ","B: single mapping ","C: multi mapping ","D: multi mapping "), each=2),
-                  dose=rep(c("dark low digest1", "dark low digest2", "dark high digest1", "dark high digest2"),2),
-                  len=c(data2[9],data2[11],data2[13],data2[15],data2[10],data2[12],data2[14],data2[16]))
+q1 + scale_fill_manual(values=c('#6b7b8c','#002c54'))  
 
-p =ggplot(data=df2, aes(x=dose, y=len, fill=colorpanel)) +
-  geom_bar(stat="identity", )
-p+ scale_fill_manual(values=c('#e8a735','#008dcb', '#008dcb' ,'#B6452c'))
-
-df_sorted <- arrange(df2, dose, supp) 
-df_cumsum <- ddply(df_sorted, "dose",
-                   transform, label_ypos=cumsum(len))
-
-q1 =ggplot(data=df_cumsum, aes(x=dose, y=len, fill=colorpanel)) +
-  geom_bar(stat = "identity") +
-  theme(axis.text.x = element_text(angle = 30,hjust = 0.9))   +
-  geom_text(aes(y=label_ypos, label=len), vjust=c(2,  2,2,  2,  2,  2,2,  2),color="white", size=3.5)+
-  scale_fill_brewer(palette="Paired")+
-  theme_light()+
-  theme(axis.text.x = element_text(angle = 30,hjust = 1))
-
-q1 + scale_fill_manual(values=c('#cb7c6b', '#668098', '#B6452c' ,'#002c54'),)
-
-
-#Xx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xX
-#Xx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xX
-#Xx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xX
-#Xx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xXx__xXx_xX
-#
+#'
+#'
+#'
+#'
+#'
+#'
 ####### Dataset collection
 
-"""
-Hier kommen die Werte von samtool view, vergleich von vorher nachher
-SRR5222795      : 204736974    137997930
-SRR5222794      :  96413726     67123106
-SRR5222793      : 190711526    130795692
-SRR5222792      : 215784420    143671567
-SRR5222791      : 207250166    144195141
-SRR5222790      : 241548352    166810489
-SRR5222789      : 150562838     97921483
-SRR5222788      : 225899250    153264513
-"""
-install.packages("wesanderson")
-library(wesanderson)
+
+#Hier kommen die Werte von samtool view, vergleich von vorher nachher
+#SRR5222795      : 204736974    137997930
+#SRR5222794      :  96413726     67123106
+#SRR5222793      : 190711526    130795692
+#SRR5222792      : 215784420    143671567
+#SRR5222791      : 207250166    144195141
+#SRR5222790      : 241548352    166810489
+#SRR5222789      : 150562838     97921483
+#SRR5222788      : 225899250    153264513
+#
+
 
 data_stats = matrix(NA,2,8)
 data_stats[1,1] =204736974  #D
@@ -470,18 +426,15 @@ data_stats[2,8] =153264513
 
 
 # weiter gehts
-#########             DARKNESS STATS
-#'                    DARKNESS STATS
+#########            CUTOFF STAT BEFORE AND AFTER
 #'
 #'
-#'
-df2 <- data.frame(supp=rep(c( "reads after cut",  "reads before cut"), each=4),
-                  colorpanel=rep(c( "A: dark low d. uncut","B: dark high d. uncut","C: dark low d. cut","D: dark high d. cut"), each=2),
-                  dose=rep(c( "dark high digest2", "dark high digest1","dark low digest2", "dark low digest1"),2),
-                  len=c(data_stats[2],data_stats[4],data_stats[6],data_stats[8],data_stats[1],data_stats[3],data_stats[5],data_stats[7]))
+df2 <- data.frame(supp=rep(c( "reads after cut",  "reads before cut"), each=8),
+                  dose=rep(c("light low digest1", "light low digest2", "light high digest1", "light high digest2","dark low digest1", "dark low digest2", "dark high digest1", "dark high digest2"),2),
+                  len=c(data_stats[2],data_stats[4],data_stats[6],data_stats[8],data_stats[10],data_stats[12],data_stats[14],data_stats[16],data_stats[1],data_stats[3],data_stats[5],data_stats[7],data_stats[9],data_stats[11],data_stats[13],data_stats[15]))
 
 df2
-p =ggplot(data=df2, aes(x=dose, y=len, fill=colorpanel)) +
+p =ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
   geom_bar(stat="identity", )
 p+ scale_fill_manual(values=c('#e8a735','#008dcb', '#008dcb' ,'#B6452c'))
 
@@ -489,55 +442,25 @@ df_sorted <- arrange(df2, dose, supp)
 df_cumsum <- ddply(df_sorted, "dose",
                    transform, label_ypos=cumsum(len))
 
-q1 =ggplot(data=df_cumsum, aes(x=dose, y=len, fill=colorpanel)) +
+q1 =ggplot(data=df_cumsum, aes(x=dose, y=len, fill=supp)) +
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle = 30,hjust = 1))   +
-  geom_text(aes(y=label_ypos, label=len), vjust=c(-0,2,  -2,2,  -2,2,  -1.2,2),color="white", size=3.5)+
+  geom_text(aes(y=label_ypos, label=len), vjust=c(-4,2,  -6,2,  -5,2,  -5.2,2,-4,2,  -6,2,  -6,2,  -2.2,2),color="white", size=2.9)+
   scale_fill_brewer(palette="Paired")+
   theme_light()+
   theme(axis.text.x = element_text(angle = 30,hjust = 1))
 
-q1 + scale_fill_manual(values=c('#668098', '#cb7c6b' ,'#002c54','#B6452c'))
-'#cb7c6b'
-#  '#e8a735','#e8a735','#008dcb', '#008dcb' ,'#B6452c','#B6452c','#002c54' ,'#002c54'
+q1 + scale_fill_manual(values=c('#6b7b8c','#002c54'))  
+
+
 #'                    
 #'
-#'                            LIGHTNING  STATS
-#'                            LIGHTNING  STATS
 #'
 #'
 #'
-#########
-###########            LIGHTNING  STATS
-df2 <- data.frame(supp=rep(c( "reads after cut",  "reads before cut"), each=4),
-                  colorpanel=rep(c( "A: light low d. uncut","B: light high d. uncut","C: light low d. cut","D: light high d. cut"), each=2),
-                  dose=rep(c( "light high digest2", "light high digest1","light low digest2", "light low digest1"),2),
-                  len=c(data_stats[10],data_stats[12],data_stats[14],data_stats[16],data_stats[9],data_stats[11],data_stats[13],data_stats[15]))
-
-df2
-p =ggplot(data=df2, aes(x=dose, y=len, fill=colorpanel)) +
-  geom_bar(stat="identity", )
-p+ scale_fill_manual(values=c('#e8a735','#008dcb', '#008dcb' ,'#B6452c'))
-
-df_sorted <- arrange(df2, dose, supp) 
-df_cumsum <- ddply(df_sorted, "dose",
-                   transform, label_ypos=cumsum(len))
-
-q1 =ggplot(data=df_cumsum, aes(x=dose, y=len, fill=colorpanel)) +
-  geom_bar(stat = "identity") +
-  theme(axis.text.x = element_text(angle = 30,hjust = 1))   +
-  geom_text(aes(y=label_ypos, label=len), vjust=c(-2,2,  -2,2,  -2,2,  -1.2,2),color="white", size=3.5)+
-  scale_fill_brewer(palette="Paired")+
-  theme_light()+
-  theme(axis.text.x = element_text(angle = 30,hjust = 1))
-
-q1 + scale_fill_manual(values=c('#7fc6e5','#f3d39a', '#008dcb', '#e8a735' ))
-
-
-
-
-
-#  '#e8a735','#e8a735','#008dcb', '#008dcb' ,'#B6452c','#B6452c','#002c54' ,'#002c54'
+#'
+#'
+#'
 #'
 #'
 ##      #    strg + F   = replace value 
@@ -546,38 +469,65 @@ dat3  <- read.delim("C:/Users/andie/Downloads/Galaxy18-[multiBamSummary_on_data_
 head(dat3)
 
 
-dat.new<-dat3[,-c(1:3)]
-head(dat.new)
-#dat3[,grep("SRR",colnames(dat3))]
-rownames(dat.new) <- paste0(dat3$X..chr.,":",dat3$X.start.,"-",dat3$X.end.)
 
 
-mean.samp<-apply(dat.new,2,mean)
-sd.samp<-apply(dat.new,2,sd)
 
-table((mean.samp[1]+2*sd.samp[1]) > dat.new[,1])   # 1 : 8 für loop
-idx<-((mean.samp[1]+2*sd.samp[1]) > dat.new[,1])   # 2* sd, standarddiviation mal 2-3 
 
-# mx<-cbind(idx.1, idx.2, ..)
-# mx.sum<-apply(mx,1,sum)
-# idx<-mx.sum==8
 
-head(dat.new[!idx,1])
+for (x in 1:8){ 
+  time_lambda = 
+    system.time({
+      
+     dat.new<-dat3[,-c(1:3)]
+     head(dat.new)
+     #dat3[,grep("SRR",colnames(dat3))]
+     rownames(dat.new) <- paste0(dat3$X..chr.,":",dat3$X.start.,"-",dat3$X.end.)
 
-head(rownames(dat.new[!idx,]))
+      mean.samp<-apply(dat.new,2,mean)
+      sd.samp<-apply(dat.new,2,sd)
 
-bed.format<-data.frame(chr=dat3[!idx,"X..chr."],
+      table((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,1])   # 1 : 8 für loop
+      idx1<-((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,1])   # 2* sd, standarddiviation mal 2-3 
+      
+      table((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,2])   # 1 : 8 für loop
+      idx2<-((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,2])   # 2* sd, standarddiviation mal 2-3 
+      
+      table((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,3])   # 1 : 8 für loop
+      idx3<-((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,3])   # 2* sd, standarddiviation mal 2-3 
+      
+      table((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,4])   # 1 : 8 für loop
+      idx4<-((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,4])   # 2* sd, standarddiviation mal 2-3 
+      
+      table((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,5])   
+      idx5<-((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,5])
+      table((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,6])   
+      idx6<-((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,6])
+      table((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,7])   
+      idx7<-((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,7])
+      table((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,8])   
+      idx8<-((mean.samp[1]+0.3*sd.samp[1]) > dat.new[,8])
+
+      mx<-cbind(idx1, idx2, idx3, idx4,idx5, idx6, idx7, idx8)
+      mx.sum<-apply(mx,1,sum)
+      idx <- mx.sum==8
+      
+
+     head(dat.new[!idx,1])
+
+     head(rownames(dat.new[!idx,]))
+
+     bed.format<-data.frame(chr=dat3[!idx,"X..chr."],
                        start=dat3[!idx,"X.start."],
                        end=dat3[!idx,"X.end."],
                        name=rownames(dat.new[!idx,]),
                        score=dat.new[!idx,1],
                        strand=".")
 
-
-
-
-
-
 head(bed.format)
-write.table(bed.format, file="C:/Users/andie/Downloads/exampleBED.bed", quote=F, sep="\t", col.names = F,row.names = F)
+write.table(bed.format, file="C:/Users/andie/Downloads/allBED0.3.bed", quote=F, sep="\t", col.names = F,row.names = F)
+
+
+
+
+
 #
